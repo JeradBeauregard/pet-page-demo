@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Auralune",
+    "species": "Lumin Fox",
+    "rarity": "Epic",
+    "element": "Light",
+    "temperament": "Gentle",
+    "description": "A graceful fox whose fur glows softly under moonlight. Said to appear to kind souls.",
+    "habitat": "Grove of Echoes",
+    "baseStats": { "vitality": 8, "spirit": 15, "agility": 10 },
+    "evolutionStage": 1,
+    "bonded": false,
+    "createdAt": "2025-01-03T00:00:00.000Z"
+  },
+  {
+    "name": "Zephyra",
+    "species": "Skywing Spryte",
+    "rarity": "Rare",
+    "element": "Air",
+    "temperament": "Curious",
+    "description": "A small winged creature that rides the morning breeze. It hums when the wind changes.",
+    "habitat": "Azure Cliffs",
+    "baseStats": { "vitality": 6, "spirit": 12, "agility": 14 },
+    "evolutionStage": 1,
+    "bonded": true,
+    "createdAt": "2025-02-10T00:00:00.000Z"
+  },
+  {
+    "name": "Mireth",
+    "species": "Verdant Hatchling",
+    "rarity": "Common",
+    "element": "Earth",
+    "temperament": "Loyal",
+    "description": "This small reptile tends to gardens and sprouts flowers where it sleeps.",
+    "habitat": "Heartwood Glade",
+    "baseStats": { "vitality": 10, "spirit": 7, "agility": 8 },
+    "evolutionStage": 1,
+    "bonded": false,
+    "createdAt": "2025-03-22T00:00:00.000Z"
+  },
+  {
+    "name": "Solren",
+    "species": "Suncrest Griffin",
+    "rarity": "Legendary",
+    "element": "Fire",
+    "temperament": "Proud",
+    "description": "A radiant griffin whose wings shimmer like dawn. Protects the Heartwood Gate from intruders.",
+    "habitat": "Solar Peaks",
+    "baseStats": { "vitality": 16, "spirit": 18, "agility": 14 },
+    "evolutionStage": 2,
+    "bonded": true,
+    "createdAt": "2025-05-14T00:00:00.000Z"
+  },
+  {
+    "name": "Nivelle",
+    "species": "Frostwhisper Fawn",
+    "rarity": "Uncommon",
+    "element": "Ice",
+    "temperament": "Timid",
+    "description": "A mystical fawn that leaves trails of snowflakes behind. Its breath smells like mint and frost.",
+    "habitat": "Crystal Tundra",
+    "baseStats": { "vitality": 7, "spirit": 11, "agility": 9 },
+    "evolutionStage": 1,
+    "bonded": false,
+    "createdAt": "2025-06-09T00:00:00.000Z"
+  }
+]
