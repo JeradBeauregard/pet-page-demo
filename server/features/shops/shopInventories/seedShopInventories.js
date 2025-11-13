@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Shop = require('../shopModel');
 const Item = require('../../items/itemModel');
-const ConnectDB = require('../../db');
+const ConnectDB = require('../../../db');
 
 async function seedShopInventories(){
     try{

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const ConnectDB = require('../db');
+const ConnectDB = require('../../db');
 const Shop = require('./shopModel');
 const Item = require('../items/itemModel');
 const ItemType = require('../items/itemTypes/ItemTypeModel');

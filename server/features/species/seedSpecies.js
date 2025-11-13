@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const ConnectDB = require('../db');
+const ConnectDB = require('../../db');
 const Species = require('./speciesModel');
 const Pet = require('../pets/petModel');
 

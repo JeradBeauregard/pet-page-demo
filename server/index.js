@@ -27,14 +27,14 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //-- CONNECT TO DB and Seed
 
-const { seedUsers } = require('./users/seedUsers');
-const { seedPets } = require('./pets/seedPets');
-const { seedSpecies } = require('./species/seedSpecies');
-const { seedItemTypes } = require('./items/itemTypes/seedItemTypes');
-const { seedItems } = require('./items/seedItems');
-const { seedUserInventories } = require('./users/userInventories/seedUserInventories');
-const { seedShops } = require('./shops/seedShops');
-const { seedShopInventories } = require('./shops/shopInventories/seedShopInventories');
+const { seedUsers } = require('./features/users/seedUsers');
+const { seedPets } = require('./features/pets/seedPets');
+const { seedSpecies } = require('./features/species/seedSpecies');
+const { seedItemTypes } = require('./features/items/itemTypes/seedItemTypes');
+const { seedItems } = require('./features/items/seedItems');
+const { seedUserInventories } = require('./features/users/userInventories/seedUserInventories');
+const { seedShops } = require('./features/shops/seedShops');
+const { seedShopInventories } = require('./features/shops/shopInventories/seedShopInventories');
 
 async function seedDB(){
     await ConnectDB();
@@ -100,17 +100,25 @@ try{
 
 //--- ROUTES
 
+const itemRoutes = require("./features/items/itemRoutes");
+app.use("/items", itemRoutes);
+
+const itemTypeRoutes = require("./features/items/itemTypes/ItemTypeRoutes");
+app.use("/items/itemtypes", itemTypeRoutes);
+
+const userRoutes = require("./features/users/userRoutes");
+app.use("/users", userRoutes);
+
+const petRoutes = require("./features/pets/petRoutes");
+app.use("/pets", petRoutes);
+
+const speciesRoutes = require("./features/species/speciesRoutes");
+app.use("/species", speciesRoutes);
+
+const shopRoutes = require("./features/shops/shopRoutes");
+app.use("/shops", shopRoutes);
 
 
-
-app.get("/", async (req, res) => { // get request to our express application
-
-//const petDataResponse = await fetch("http://localhost:8888/PlayerPetData/ListPlayerPetData");
-//const petdata = await petDataResponse.json();
-
-res.render("index", { title: "Home", petdata });
-
-});
 
 //req: The request object, containing data from the client (like form inputs, headers, etc.).
 //res: The response object, used to send a response back to the client.

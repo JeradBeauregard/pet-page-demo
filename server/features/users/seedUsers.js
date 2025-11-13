@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose');
 const User = require('./userModel');
-const  ConnectDB  = require('../db');
+const  ConnectDB  = require('../../db');
 
 async function seedUsers(){
 
