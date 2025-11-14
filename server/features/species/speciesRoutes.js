@@ -6,8 +6,8 @@ const controller = require('./speciesControllers');
 
 router.get("/", controller.getAllSpecies);
 router.get("/:id", controller.getSpeciesById);
-router.post("/", controller.createSpecies);
-router.put("/:id", controller.updateSpecies);
-router.delete("/:id", controller.deleteSpecies);
+router.post("/create", controller.createSpecies);
+router.put("/update/:id", controller.updateSpecies);
+router.delete("/delete/:id", controller.deleteSpecies);
 
 module.exports = router;

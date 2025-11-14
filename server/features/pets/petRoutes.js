@@ -6,8 +6,8 @@ const controller = require('./petControllers');
 
 router.get("/", controller.getAllPets);
 router.get("/:id", controller.getPetById);
-router.post("/", controller.createPet);
-router.put("/:id", controller.updatePet);
-router.delete("/:id", controller.deletePet);
+router.post("/create", controller.createPet);
+router.put("/update/:id", controller.updatePet);
+router.delete("/delete/:id", controller.deletePet);
 
 module.exports = router;
