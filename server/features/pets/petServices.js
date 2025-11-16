@@ -22,7 +22,7 @@ module.exports = {
     //Basic CRUD through Utils Template
 
     ...Base(Pet),
-    getUserPets,
+    getPetsByUser,
     getPetsBySpecies
 
 
