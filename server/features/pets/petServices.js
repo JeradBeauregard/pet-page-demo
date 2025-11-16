@@ -5,7 +5,7 @@ const Base = require('../../utils/baseService');
 
     // custom service logic
 
-    async function getUserPets(userId){
+    async function getPetsByUser(userId){
         const user = await User.findById(userId).populate("pets");
         if(!user){ throw Error("User not found.");}
         return user.pets;

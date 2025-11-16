@@ -12,7 +12,7 @@ router.delete("/delete/:id", controller.deletePet);
 
 // custom logic
 
-router.get("/usersPets/:userId", controller.getUsersPets);
+router.get("/getPetsByUser/:userId", controller.getPetsByUser);
 router.get("/getPetsBySpecies/speciesId", controller.getPetsBySpecies);
 
 

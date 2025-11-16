@@ -51,7 +51,7 @@ exports.deletePet = async (req, res) => {
 
 exports.getUsersPets = async (req, res) => {
     try{
-        const pets = await petServices.getUsersPets(request.params.userId);
+        const pets = await petServices.getPetsByUser(request.params.userId);
         res.json(pets);
     }catch (err) {
         console.error("getUserPets failed. petController.js");
