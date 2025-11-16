@@ -10,4 +10,14 @@ router.post("/create", controller.createPet);
 router.put("/update/:id", controller.updatePet);
 router.delete("/delete/:id", controller.deletePet);
 
+// custom logic
+
+router.get("/usersPets/:userId", controller.getUsersPets);
+router.get("/getPetsBySpecies/speciesId", controller.getPetsBySpecies);
+
+
 module.exports = router;
+
+
+// controllers
+

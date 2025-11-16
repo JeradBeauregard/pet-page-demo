@@ -47,3 +47,23 @@ exports.deletePet = async (req, res) => {
     }
 }
 
+// custom logic controllers
+
+exports.getUsersPets = async (req, res) => {
+    try{
+        const pets = await petServices.getUsersPets(request.params.userId);
+        res.json(pets);
+    }catch (err) {
+        console.error("getUserPets failed. petController.js");
+    }
+}
+
+exports.getPetsBySpecies = async (req, res) => {
+    try{
+        const pets = await petServices.getAllPetsOfASpecies(request.params.speciesId);
+        res.json(pets);
+    }catch (err) {
+        console.error("getAllPetsofASpecies Failed. petController.js", err);
+    }
+}
+
