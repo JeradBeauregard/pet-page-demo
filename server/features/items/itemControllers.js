@@ -52,3 +52,25 @@ exports.deleteItem = async (req, res) => {
     }
 }
 
+// custom logic controllers
+
+exports.getItemsByType = async (req, res) => {
+    try{
+        const items = await itemServices.getItemsByType(req.params.itemTypeId);
+        res.json(items);
+
+    }catch (err) {
+        console.error("getItemsByType Failed. itemControllers.js", err);
+        res.status(500).json({ error: err.message });
+    }
+}
+
+exports.getTypesByItem = async (req, res) => {
+    try{
+        const types = await itemServices.getTypesByItems(req.params.itemTypeId);
+        res.json(types);
+    }catch (err) {
+        console.error("getTypesByItems Failed. itemControllers.js", err);
+        res.status(500).json({ error: err.message });
+    }
+}

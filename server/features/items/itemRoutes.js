@@ -10,4 +10,10 @@ router.post("/create", controller.createItem);
 router.put("/update/:id", controller.updateItem);
 router.delete("/delete/:id", controller.deleteItem);
 
+// custom logic routes
+
+router.get("/getItemsByType/:itemTypeId", controller.getItemsByType);
+router.get("/getTypesByItem/:itemId", controller.getTypesByItem);
+
+
 module.exports = router;
