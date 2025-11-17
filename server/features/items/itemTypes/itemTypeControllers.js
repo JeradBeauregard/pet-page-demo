@@ -6,6 +6,7 @@ exports.getAllItemTypes = async (req, res) => {
         res.json(itemTypes);
     }catch (err) {
         console.error('getAllItemTypes Failed. itemTypeController.js', err);
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -15,6 +16,7 @@ exports.getItemTypeById = async (req, res) => {
         res.json(itemType);
     }catch (err) {
         console.error('getItemTypeById Failed. itemTypeController.js', err);
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -24,6 +26,7 @@ exports.createItemType = async (req, res) => {
         res.json(itemType);
     }catch (err) {
         console.error('createItemType Failed. itemTypeController.js', err);
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -33,6 +36,7 @@ exports.updateItemType = async (req, res) => {
         res.json(itemType);
     }catch (err) {
         console.error('updateItemType Failed. itemTypeController.js', err);
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -42,5 +46,6 @@ exports.deleteItemType = async (req, res) => {
         res.json(itemType);
     }catch (err) {
         console.error('deleteItemType Failed. itemTypeController.js', err);
+        res.status(500).json({ error: err.message });
     } 
 }

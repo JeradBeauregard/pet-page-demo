@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('./ShopControllers');
+const shopServices = require('./shopServices');
 
 // BASIC CRUD
 
@@ -12,6 +13,12 @@ router.delete("/delete/:id", controller.deleteShop);
 
 // Custom logic
 
+router.put("/:shopId/addItemType/:itemTypeId", controller.addItemType); // add item type to a shop
+router.put("/:shopId/removeItemType/itemTypeId", controller.removeItemType); // remove item type from a shop
 
 
 module.exports = router;
+
+
+
+

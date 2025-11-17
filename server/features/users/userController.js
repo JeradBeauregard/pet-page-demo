@@ -8,6 +8,7 @@ exports.getAllUsers = async (req, res) => {
         res.json(users);
     } catch (err) {
         console.error('getAllUsers Failed. userController.js', err);
+        res.status(500).json({ error: err.message });
     }
 };
 
@@ -17,6 +18,7 @@ exports.getUserById = async (req, res) => {
         res.json(user);
     } catch (err) {
         console.error('getUserById Failed. userController.js', err);
+        res.status(500).json({ error: err.message });
     }
 };
 
@@ -26,6 +28,7 @@ exports.createUser = async (req, res) => {
         res.json(created);
     } catch (err) {
         console.error('createUser Failed. userController.js', err);
+        res.status(500).json({ error: err.message });
     }
 };
 
@@ -35,6 +38,7 @@ exports.updateUser = async (req, res) => {
         res.json(updated);
     } catch (err) {
         console.error('updateUser Failed. userController.js', err);
+        res.status(500).json({ error: err.message });
     }
 };
 
@@ -44,5 +48,6 @@ exports.deleteUser = async (req, res) => {
         res.json(deleted);
     } catch (err) {
         console.error('deleteUser Failed. userController.js', err);
+        res.status(500).json({ error: err.message });
     }
 };

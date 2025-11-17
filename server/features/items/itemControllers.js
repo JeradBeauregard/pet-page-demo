@@ -8,6 +8,7 @@ exports.getAllItems = async (req, res) => {
     res.json(items);
     }catch (err) {
         console.error('getAllItems Failed. ItemController.js', err);
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -17,6 +18,7 @@ exports.getItemById = async (req, res) => {
         res.json(item);
     }catch (err) {
         console.error('getItemById Failed. ItemController.js', err);
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -26,6 +28,7 @@ exports.createItem = async (req, res) => {
         res.json(item); // might change to service response instead
     }catch (err){
         console.error('createItem failes. ItemController.js', err);
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -35,6 +38,7 @@ exports.updateItem = async (req, res) => {
         res.json(item);
     }catch (err){
         console.error('updateItem Failed. itemController.js', err);
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -44,6 +48,7 @@ exports.deleteItem = async (req, res) => {
         res.json(item);
     }catch (err) {
         console.error('deleteItem Failed. itemController.js', err);
+        res.status(500).json({ error: err.message });
     }
 }
 

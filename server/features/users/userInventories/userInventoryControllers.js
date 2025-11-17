@@ -8,6 +8,7 @@ exports.getInventory = async (req, res) =>{
         res.json(inventory);
     }catch (err) {
         console.error("Get Inventory Failed. userInventoryControllers.js", err);
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -17,6 +18,7 @@ exports.addItem = async (req, res) =>{
         res.json(item);
     }catch (err) {
         console.error("Add Item Failed. inventoryController.js", err);
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -26,6 +28,7 @@ exports.deleteItem = async (req, res) =>{
         res.json(item);
     }catch (err) {
         console.error("Delete Item Failed. inventoryController.js", err);
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -35,6 +38,7 @@ exports.updateQuantity = async (req, res) =>{
         res,json(item);
     }catch (err){
         console.error("updateQuantity Failed. userInventoryServices.js", err);
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -44,5 +48,6 @@ exports.clearInventory = async (req, res) =>{
         res.json(inventory);
     }catch (err) {
         console.erroy("clearInventory Failed. userInventoryServices.js", err);
+        res.status(500).json({ error: err.message });
     }
 }

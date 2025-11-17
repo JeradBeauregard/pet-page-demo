@@ -8,6 +8,7 @@ exports.getAllSpecies = async (req, res) => {
         res.json(species);
     } catch (err) {
         console.error('getAllSpecies Failed. speciesController.js', err);
+        res.status(500).json({ error: err.message });
     }
 };
 
@@ -17,6 +18,7 @@ exports.getSpeciesById = async (req, res) => {
         res.json(species);
     } catch (err) {
         console.error('getSpeciesById Failed. speciesController.js', err);
+        res.status(500).json({ error: err.message });
     }
 };
 
@@ -26,6 +28,7 @@ exports.createSpecies = async (req, res) => {
         res.json(created);
     } catch (err) {
         console.error('createSpecies Failed. speciesController.js', err);
+        res.status(500).json({ error: err.message });
     }
 };
 
@@ -35,6 +38,7 @@ exports.updateSpecies = async (req, res) => {
         res.json(updated);
     } catch (err) {
         console.error('updateSpecies Failed. speciesController.js', err);
+        res.status(500).json({ error: err.message });
     }
 };
 
@@ -44,5 +48,6 @@ exports.deleteSpecies = async (req, res) => {
         res.json(deleted);
     } catch (err) {
         console.error('deleteSpecies Failed. speciesController.js', err);
+        res.status(500).json({ error: err.message });
     }
 };

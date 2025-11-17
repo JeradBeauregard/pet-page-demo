@@ -8,6 +8,7 @@ exports.getAllPets = async (req, res) => {
     res.json(pets);
     }catch (err) {
         console.error('getAllPets Failed. PetControllers.js', err);
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -17,6 +18,7 @@ exports.getPetById = async (req, res) => {
         res.json(pet);
     }catch (err) {
         console.error('getPetById Failed. PetControllers.js', err);
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -26,6 +28,7 @@ exports.createPet = async (req, res) => {
         res.json(pet); // might change to service response instead
     }catch (err){
         console.error('createPet failed. petController.js', err);
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -35,6 +38,7 @@ exports.updatePet = async (req, res) => {
         res.json(pet);
     }catch (err){
         console.error('updatePet Failed. petController.js', err);
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -44,6 +48,7 @@ exports.deletePet = async (req, res) => {
         res.json(pet);
     }catch (err) {
         console.error('deletePet Failed. petController.js', err);
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -55,6 +60,7 @@ exports.getUsersPets = async (req, res) => {
         res.json(pets);
     }catch (err) {
         console.error("getUserPets failed. petController.js");
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -64,6 +70,7 @@ exports.getPetsBySpecies = async (req, res) => {
         res.json(pets);
     }catch (err) {
         console.error("getAllPetsofASpecies Failed. petController.js", err);
+        res.status(500).json({ error: err.message });
     }
 }
 
