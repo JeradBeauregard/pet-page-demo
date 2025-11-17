@@ -10,4 +10,8 @@ router.post("/create", controller.createShop);
 router.put("/update/:id", controller.updateShop);
 router.delete("/delete/:id", controller.deleteShop);
 
+// Custom logic
+
+
+
 module.exports = router;
