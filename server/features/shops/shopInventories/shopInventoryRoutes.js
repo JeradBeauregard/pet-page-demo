@@ -2,9 +2,11 @@
 
 const controller = require('./ShopInventoryControllers');
 
-router.get("/:shopId/inventory", controller.getInventory);
-router.post("/:shopId/inventory/add/:itemId", controller.addItem);
-router.put("/:shopId/inventory/delete/:itemId", controller.deleteItem);
-router.put("/:shopId/inventory/updateQuantity/:itemId", controller.updateQuantity);
-router.put("/:shopId/inventory/clearInventory", controller.clearInventory);
+router.get("/:shopId/inventory", controller.getInventory); // get shop inventory
+router.get("/:shopId/inventroy/check", controller.checkInventory); // check shop inventory for an item -- returns item or null
+router.post("/:shopId/inventory/add", controller.addItem); // request body ({itemId, quantity}) add item to shop inventory
+router.put("/:shopId/inventory/remove", controller.removeItem); //request body ({itemId, quantity}) remove item from shop inventory
+router.put("/:shopId/inventory/update", controller.updateQuantity); //request body ({itemId, quantity}) update quantity of item in shop inventory remove if < 0
+router.put("/:shopId/inventory/clear", controller.clearInventory); // clear shop inventory
+
 

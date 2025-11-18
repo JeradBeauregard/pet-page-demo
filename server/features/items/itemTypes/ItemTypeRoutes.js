@@ -6,9 +6,9 @@ const controller = require('./itemTypeControllers');
 
 router.get("/", controller.getAllItemTypes);
 router.get("/:id", controller.getItemTypeById);
-router.post("/create", controller.createItemType);
-router.put("/update/:id", controller.updateItemType);
-router.delete("/delete/:id", controller.deleteItemType);
+router.post("/", controller.createItemType);
+router.put("/:id", controller.updateItemType);
+router.delete("/:id", controller.deleteItemType);
 
 
 module.exports = router;

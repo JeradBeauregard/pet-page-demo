@@ -7,14 +7,14 @@ const shopServices = require('./shopServices');
 
 router.get("/", controller.getAllShops);
 router.get("/:id", controller.getShopById);
-router.post("/create", controller.createShop);
-router.put("/update/:id", controller.updateShop);
-router.delete("/delete/:id", controller.deleteShop);
+router.post("/", controller.createShop);
+router.put("/:id", controller.updateShop);
+router.delete("/:id", controller.deleteShop);
 
 // Custom logic
 
-router.put("/:shopId/addItemType/:itemTypeId", controller.addItemType); // add item type to a shop
-router.put("/:shopId/removeItemType/itemTypeId", controller.removeItemType); // remove item type from a shop
+router.put("/:shopId/itemtypes/add", controller.addItemType); // request body ({itemTypeId}) add item type to a shop
+router.put("/:shopId/itemtypes/remove", controller.removeItemType); // request body ({itemTypeId}) remove item type from a shop
 
 
 module.exports = router;

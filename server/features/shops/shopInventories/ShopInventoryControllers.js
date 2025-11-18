@@ -1,20 +1,31 @@
 // -- SHOP CONTROLLERS
 
+const { request } = require('express');
 const shopInventoryService = require('./shopInventoryServices');
 
 exports.getInventory = async (req, res) => {
     try{
         const item = await shopInventoryService.getInventory(req.params.shopId);
         res.json(item);
-    }catch (err){
+    }catch (err) {
         console.error("getInventory Failed. shopInventoryController.js", err);
+        res.status(500).json({ error: err.message });
+    }
+}
+
+exports.checkInventory = async (req, res) => {
+    try{
+        const item = await shopInventoryService.checkInventory(req.params.shopId, request.body.itemId);
+        res.json(item);
+    }catch (err) {
+        console.error("checkInventory Failed. shopInventoryControllers.js", err);
         res.status(500).json({ error: err.message });
     }
 }
 
 exports.addItem = async (req, res) => {
     try{
-        const item = await shopInventoryService.addItem(req.params.shopId, req.params.itemId, req.body.quantity);
+        const item = await shopInventoryService.addItem(req.params.shopId, req.body.itemId, req.body.quantity);
         res.json(item);
     }catch (err) {
         console.error("addItem Failed. shopInventoryController.js", err);
@@ -22,9 +33,9 @@ exports.addItem = async (req, res) => {
     }
 }
 
-exports.deleteItem = async (req, res) => {
+exports.removeItem = async (req, res) => {
     try{
-        const item = await shopInventoryService.deleteItem(req.params.shopId, req.params.itemId);
+        const item = await shopInventoryService.removeItem(req.params.shopId, req.body.itemId, req.body.quantity);
         res.json(item);
     }catch (err) {
         console.error("deleteItem Failed. shopInventoryController.js", err);
@@ -34,7 +45,7 @@ exports.deleteItem = async (req, res) => {
 
 exports.updateQuantity = async (req, res) => {
     try{
-        const item = await shopInventoryService.updateQuantity(req.params.shopId, req.params.itemId, req.body.quantity);
+        const item = await shopInventoryService.updateQuantity(req.params.shopId, req.body.itemId, req.body.quantity);
         res.json(item);
     }catch (err) {
         console.error("updateQuantity Failed. shopInventoryController.js", err);

@@ -58,7 +58,7 @@ exports.deleteShop = async (req, res) => {
 
 exports.addItemType = async (req, res) => {
     try{
-        const itemType = await shopServices.addItemType(req.params.shopId, req.params.itemTypeId);
+        const itemType = await shopServices.addItemType(req.params.shopId, req.body.itemTypeId);
         res.json(itemType);
     }catch (err) {
         console.error("addItemType Failed. shopServices.js", err);
@@ -69,7 +69,7 @@ exports.addItemType = async (req, res) => {
 
 exports.removeItemType = async (req, res) => {
     try{
-        const itemType = await shopServices.removeItemType(req.params.shopId, req.params.itemTypeId);
+        const itemType = await shopServices.removeItemType(req.params.shopId, req.body.itemTypeId);
         res.json(itemType);
     }catch (err) {
         console.error("removeItemType Failed. shopServices.js", err);

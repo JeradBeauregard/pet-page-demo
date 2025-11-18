@@ -14,6 +14,18 @@ const userModel = require('../userModel');
         }
     }
 
+    async function checkInventory(userId, itemId){
+        try{
+            const user = await userModel.findById.select("inventory");
+            if(!user){ throw new Error ("User not found");}
+            const item = user.inventory.find( inv => inv.itemId.toString() === itemId );
+            return item; // if no item returns null
+        }catch (err) {
+            console.error("checkInventory Failed. inventoryServices.js");
+            throw err;
+        }
+    }
+
     async function addItem(userId, itemId, quantity){
         try{
             // get user and inventory
@@ -30,7 +42,7 @@ const userModel = require('../userModel');
             )
 
             if(existingItem){
-                existingItem.quantity += quantity;
+                throw new Error ("item already exists. use updateQuantity instead.");
             }else{
                 user.inventory.push({
                     itemId,
@@ -46,35 +58,30 @@ const userModel = require('../userModel');
         }
     }
 
-    async function deleteItem(userId, itemId, quantity){
-        const user = await userModel.findById(userId).select("inventory");
-        if(!user){
+async function removeItem(userId, itemId) {
+    try {
+        // Use $pull to remove elements from the inventory array that match the criteria
+        const updatedUser = await userModel.findByIdAndUpdate(
+            userId,
+            { $pull: { inventory: { itemId: itemId } } }, // Remove items where itemId matches
+            { new: true } // Return the updated document
+        ).select("inventory"); // Select only the inventory field for the return value
+
+        if (!updatedUser) {
             throw new Error("User not found.");
         }
         
-        const item = user.inventory.find(
-            inv => inv.itemId.toString() === itemId
-        )
+        return updatedUser; // Returns the updated user object with the modified inventory
 
-        if(!item){
-            throw new Error("Item not found");
-        }
-
-        item.quantity -= quantity;
-        if(item.quantity <= 0){
-            // delete item from document instance
-            user.inventory = user.inventory.filter( // mongoose prefers filter over splice for validation
-                inv => inv.itemId.toString() !== itemId  // if item quantity is 0 filter all other items out except that one to remove
-            )
-        }
-
-        const result = await user.save();
-        return result;
+    } catch (err) {
+        console.error("deleteItem Failed. userInventoryServices.js", err);
+        throw err;
     }
+}
 
 
     async function updateQuantity(userId,itemId,quantity){
-
+        try{ 
         // get user
         const user = await userModel.findById(userId).select("inventory");
         if(!user){ throw new Error("User not found.");}
@@ -93,15 +100,24 @@ const userModel = require('../userModel');
 
         const result = await user.save();
         return result;
+    }catch (err) {
+        console.error("updateQuantity Failed. userInventoryServices.js", err);
+        throw err;
+    }
     }
 
     async function clearInventory(userId){
+    try{
         const user = await userModel.findById(userId).select("inventory");
         if(!user){ throw new Error("User not found.");}
         user.inventory = [];
 
         const result = await user.save();
         return result;
+    }catch (err) {
+        console.error("clearInventory Failed. userInventoryServices.js", err);
+        throw err;
+    }
     }
 
-module.exports = { getInventory, addItem, deleteItem, updateQuantity, clearInventory }
+module.exports = { getInventory, checkInventory, addItem, removeItem, updateQuantity, clearInventory }

@@ -12,9 +12,19 @@ exports.getInventory = async (req, res) =>{
     }
 }
 
+exports.checkInventory = async (req, res) => {
+    try{
+        const item = await inventoryServices.checkInventory(req.params.userId, req.body.itemId);
+        res.json(item);
+    }catch (err) {
+        console.error("checkInventory Failed. userInventoryControllers.js", err);
+        res.status(500).json({ error: err.message });
+    }
+}
+
 exports.addItem = async (req, res) =>{
     try{
-        const item = await inventoryServices.addItem(req.params.userId, req.params.itemId, req.body.quantity);
+        const item = await inventoryServices.addItem(req.params.userId, req.body.itemId, req.body.quantity);
         res.json(item);
     }catch (err) {
         console.error("Add Item Failed. inventoryController.js", err);
@@ -22,9 +32,9 @@ exports.addItem = async (req, res) =>{
     }
 }
 
-exports.deleteItem = async (req, res) =>{
+exports.removeItem = async (req, res) =>{
     try{
-        const item = await inventoryServices.deleteItem(req.params.userId, req.params.itemId, req.body.quantity);
+        const item = await inventoryServices.removeItem(req.params.userId, req.body.itemId);
         res.json(item);
     }catch (err) {
         console.error("Delete Item Failed. inventoryController.js", err);
@@ -34,7 +44,7 @@ exports.deleteItem = async (req, res) =>{
 
 exports.updateQuantity = async (req, res) =>{
     try{
-        const item = await inventoryServices.updateQuantity(req.params.userId, req.params.itemId, req.body.quantity);
+        const item = await inventoryServices.updateQuantity(req.params.userId, req.body.itemId, req.body.quantity);
         res,json(item);
     }catch (err){
         console.error("updateQuantity Failed. userInventoryServices.js", err);

@@ -2,18 +2,20 @@ const express = require('express');
 const router = express.Router();
 const controller = require('./petControllers');
 
+// route: pets/
+
 // BASIC CRUD
 
 router.get("/", controller.getAllPets);
 router.get("/:id", controller.getPetById);
-router.post("/create", controller.createPet);
-router.put("/update/:id", controller.updatePet);
-router.delete("/delete/:id", controller.deletePet);
+router.post("/", controller.createPet);
+router.put("/:id", controller.updatePet);
+router.delete("/:id", controller.deletePet);
 
 // custom logic
 
-router.get("/getPetsByUser/:userId", controller.getPetsByUser);
-router.get("/getPetsBySpecies/speciesId", controller.getPetsBySpecies);
+router.get("/user/:userId", controller.getPetsByUser); // get all pets of a user
+router.get("/species/:speciesId", controller.getPetsBySpecies);
 
 
 module.exports = router;
