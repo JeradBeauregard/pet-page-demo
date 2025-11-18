@@ -54,9 +54,9 @@ exports.deletePet = async (req, res) => {
 
 // custom logic controllers
 
-exports.getUsersPets = async (req, res) => {
+exports.getPetsByUser = async (req, res) => {
     try{
-        const pets = await petServices.getPetsByUser(request.params.userId);
+        const pets = await petServices.getPetsByUser(req.params.userId);
         res.json(pets);
     }catch (err) {
         console.error("getUserPets failed. petController.js");
@@ -66,7 +66,7 @@ exports.getUsersPets = async (req, res) => {
 
 exports.getPetsBySpecies = async (req, res) => {
     try{
-        const pets = await petServices.getAllPetsOfASpecies(request.params.speciesId);
+        const pets = await petServices.getAllPetsOfASpecies(req.params.speciesId);
         res.json(pets);
     }catch (err) {
         console.error("getAllPetsofASpecies Failed. petController.js", err);

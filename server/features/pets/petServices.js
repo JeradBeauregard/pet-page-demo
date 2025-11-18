@@ -23,7 +23,7 @@ module.exports = {
 
     ...Base(Pet),
     getPetsByUser,
-    getPetsBySpecies
+    getPetsBySpecies,
 
 
 }
