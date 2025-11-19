@@ -1,10 +1,10 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/layout/Layout";
-import DashboardPage from "./pages/DashboardPage";
-import UsersPage from "./pages/UsersPage";
-import PetsPage from "./pages/PetsPage";
-import ItemsPage from "./pages/ItemsPage";
-import ShopsPage from "./pages/ShopsPage";
+import DashboardPage from "./pages/dashboard/DashboardPage";
+import UsersPage from "./pages/users/UsersPage";
+import PetsPage from "./pages/pets/PetsPage";
+import ItemsPage from "./pages/items/ItemsPage";
+import ShopsPage from "./pages/shops/ShopsPage";
 
 function App() {
 return(

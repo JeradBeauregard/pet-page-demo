@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllItems } from "../services/items/itemApi";
+import { getAllItems } from "../../services/items/itemApi";
 
 function ItemsPage() {
   const [items, setItems] = useState([]);

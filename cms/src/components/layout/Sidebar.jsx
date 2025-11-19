@@ -15,7 +15,7 @@ function Sidebar() {
     <aside
       style={{
         width: "220px",
-        backgroundColor: "#020617",
+        backgroundColor: "#131313ff",
         color: "#e5e7eb",
         padding: "1rem",
         borderRight: "1px solid #1f2937",

@@ -13,7 +13,7 @@ function Layout() {
         style={{
           flex: 1,
           padding: "1.5rem",
-          backgroundColor: "#0b1120",
+          backgroundColor: "#2e2e2eff",
           color: "#e5e7eb",
         }}
       >
