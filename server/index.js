@@ -77,7 +77,7 @@ const speciesRoutes = require("./features/species/speciesRoutes");
 const shopRoutes = require("./features/shops/shopRoutes");
 
 app.use("/items", itemRoutes);
-app.use("/itemtypes", itemTypeRoutes); // cleaner URL
+app.use("/itemtypes", itemTypeRoutes); // cleaner URL -- change later because is it?
 app.use("/users", userRoutes);
 app.use("/pets", petRoutes);
 app.use("/species", speciesRoutes);
