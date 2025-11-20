@@ -13,8 +13,9 @@ export async function getAllItems() {
 }
 
 // get an item by item id from the items collection
-export async function getItemById(itemId) {
+export async function getItemById(itemData) {
   try{
+    const { itemId } = itemData;
     const response = await api.get(`/items/${itemId}`);
     return response.data;
   }catch (err) {
@@ -25,8 +26,9 @@ export async function getItemById(itemId) {
 }
 
 // get all items of a given item type (via item type id)
-export async function getItemsByType(itemTypeId) {
+export async function getItemsByType(itemTypeData) {
   try{
+    const { itemTypeId } = itemTypeData; // item type id
     const response = await api.get(`/items/type/${itemTypeId}`);
     return response.data;
   }catch (err) {
@@ -36,8 +38,9 @@ export async function getItemsByType(itemTypeId) {
 } 
 
 // get all types attached to a specific item (via item id)
-export async function getTypesByItem(itemId) {
+export async function getTypesByItem(itemData) {
   try{
+    const { itemId } = itemData; // item id
     const response = await api.get(`/items/${itemId}/types`);
     return response.data;
   }catch (err) {
@@ -46,9 +49,10 @@ export async function getTypesByItem(itemId) {
   }
 }
 
-// attach an item type to an item
-export async function addItemType(itemId, itemTypeId) {
+// attach an item type to an item -- test with interface, accepts string instead of object
+export async function addItemType(itemData) {
   try{
+    const { itemId , itemTypeId } = itemData;
     const response = await api.put(`/items/${itemId}/types/add`, { itemTypeId });
     return response.data;
   }catch (err) {
@@ -58,8 +62,9 @@ export async function addItemType(itemId, itemTypeId) {
 }
 
 // remove an item type from an item
-export async function removeItemType(itemId, itemTypeId) {
+export async function removeItemType(itemData) {
   try{
+    const { itemId, itemTypeId } = itemData;
     const response = await api.put(`/items/${itemId}/types/remove`, { itemTypeId });
     return response.data;
   }catch (err) {
@@ -82,20 +87,22 @@ export async function createItem(itemData){
 
 // update an item
 
-export async function updateItem(itemId, itemData){
+export async function updateItem(itemData){
   try{
+    const { itemId } = itemData;
     const response = await api.put(`/items/${itemId}`, itemData);
     return response.data;
   }catch (err) {
-    console.error("updateItem Failed. itemApi.js");
+    console.error("updateItem Failed. itemApi.js", err);
     throw err;
   }
 }
 
 // delete an item
 
-export async function deleteItem(itemId){
+export async function deleteItem(itemData){
   try{
+    const { itemId } = itemData;
     const response = await api.delete(`/items/${itemId}`);
     return response.data;
   }catch (err) {

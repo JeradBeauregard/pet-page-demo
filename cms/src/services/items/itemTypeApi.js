@@ -12,8 +12,9 @@ export async function getAllItemTypes(){
 }
 
 // get an item type by id
-export async function getItemTypeById(itemTypeId){
+export async function getItemTypeById(itemTypeData){
     try{
+        const { itemTypeId } = itemTypeData;
         const response = await api.get(`/itemTypes/${itemTypeId}`);
         return response.data;
     }catch (err) {
@@ -34,8 +35,9 @@ export async function createItemType(itemTypeData){
 }
 
 // update an item type
-export async function updateItemType(itemTypeId, itemTypeData){
+export async function updateItemType(itemTypeData){
     try{
+        const { itemTypeId } = itemTypeData;
         const response = await api.put(`/itemTypes/${itemTypeId}`, itemTypeData);
         return response.data;
     } catch (err) {
@@ -45,8 +47,9 @@ export async function updateItemType(itemTypeId, itemTypeData){
 }
 
 // delete an item type
-export async function deleteItemType(itemTypeId){
+export async function deleteItemType(itemTypeData){
     try{
+        const { itemTypeId } = itemTypeData;
         const response = await api.delete(`/itemTypes/${itemTypeId}`);
         return response.data;
     }catch (err) {
