@@ -47,26 +47,28 @@ try{
     }
 }
 
-async function removeItem(userId, itemId) {
+async function removeItem(shopId, itemId) { // Changed userId to shopId
     try {
         // Use $pull to remove elements from the inventory array that match the criteria
         const updatedShop = await Shop.findByIdAndUpdate(
-            shopId,
+            shopId, // Correctly using the function parameter
             { $pull: { inventory: { itemId: itemId } } }, // Remove items where itemId matches
             { new: true } // Return the updated document
         ).select("inventory"); // Select only the inventory field for the return value
 
         if (!updatedShop) {
-            throw new Error("User not found.");
+            // Changed error message to match the model being queried
+            throw new Error("Shop not found."); 
         }
         
-        return updatedShop; // Returns the updated user object with the modified inventory
+        return updatedShop; // Returns the updated shop object with the modified inventory
 
     } catch (err) {
         console.error("removeItem Failed. shopInventoryServices.js", err);
         throw err;
     }
 }
+
 
 async function updateQuantity(shopId, itemId, quantity){
     try{
@@ -78,8 +80,8 @@ async function updateQuantity(shopId, itemId, quantity){
         if(item.quantity <= 0){
             shop.inventory = shop.inventory.filter( inv => inv.itemId.toString() != itemId);
         }
-        const result = await shop.save();
-        return result;
+        await shop.save();
+        return item;
     }catch (err) {
         console.error("updateQuantity Failed. shopInventoryServices.js", err);
         throw err;

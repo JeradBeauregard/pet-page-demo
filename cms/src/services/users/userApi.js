@@ -1,58 +1,79 @@
-import api from '../api';
+import api from "../api";
 
-// get all users
+/**
+ * Fetch all users.
+ * @returns {Promise<Array>} - List of all users
+ */
 export async function getAllUsers(){
-    try{
+    try {
         const response = await api.get('/users');
         return response.data;
-    }catch (err) {
+    } catch (err) {
         console.error("getAllUsers Failed. userApi.js", err);
         throw err;
     }
 }
 
-// get user by id
+/**
+ * Fetch a single user by ID.
+ * @param {Object} userData - Object containing user information
+ * @param {string} userData.id - The User's ID
+ * @returns {Promise<Object>} - User document
+ */
 export async function getUserById(userData){
-    try{
-        const { userId } = userData;
-        const response = await api.get(`/users/${userId}`);
+    try {
+        const { id } = userData;
+        const response = await api.get(`/users/${id}`);
         return response.data;
-    }catch (err) {
-    console.error("getUserById Failed. userApi.js", err);
-    throw err;
+    } catch (err) {
+        console.error("getUserById Failed. userApi.js", err);
+        throw err;
     }
 }
 
-// create a new user
+/**
+ * Create a new user.
+ * @param {Object} userData - Form data for new user
+ * @returns {Promise<Object>} - Newly created user
+ */
 export async function createUser(userData){
-    try{
+    try {
         const response = await api.post('/users', userData);
         return response.data;
-    }catch (err) {
+    } catch (err) {
         console.error("createUser Failed. userApi.js", err);
         throw err;
     }
 }
 
-// update a user
+/**
+ * Update a user.
+ * @param {Object} userData - { ...fields to update }
+ * @param {string} userData.id - The user's ID
+ * @returns {Promise<Object>} - Updated user
+ */
 export async function updateUser(userData){
-    try{
-        const { userId } = userData;
-        const response = await api.put(`/users/${userId}`, userData);
+    try {
+        const { id } = userData;
+        const response = await api.put(`/users/${id}`, userData);
         return response.data;
-    }catch (err) {
+    } catch (err) {
         console.error("updateUser Failed. userApi.js", err);
         throw err;
     }
 }
 
-// delete a user
+/**
+ * Delete a user.
+ * @param {Object} userData - { id: string }
+ * @returns {Promise<Object>} - Deleted user object
+ */
 export async function deleteUser(userData){
-    try{
-        const { userId } = userData;
-        const response = await api.delete(`/users/${userId}`);
+    try {
+        const { id } = userData;
+        const response = await api.delete(`/users/${id}`);
         return response.data;
-    }catch (err) {
+    } catch (err) {
         console.error("deleteUser Failed. userApi.js", err);
         throw err;
     }

@@ -1,10 +1,16 @@
 import api from '../api';
 
 //get shop inventory
+/**
+ * 
+ * @param {Object} shopData - Shop form data
+ * @param {string} shopData.id - the shop's ID
+ * @returns {Promise<Object>} - An array of populated inventory items for a user
+ */
 export async function getShopInventory(shopData){
     try{
-        const { shopId } = shopData;
-        const response = await api.get(`/shops/${shopId}/inventory`);
+        const { id } = shopData;
+        const response = await api.get(`/shops/${id}/inventory`);
         return response.data;
     }catch (err) {
         console.error("getShopInventory Failed. shopInventoryApi.js", err);
@@ -13,10 +19,16 @@ export async function getShopInventory(shopData){
 }
 
 //check shop inventory for item. Returns null if item not found.
+/**
+ * 
+ * @param {Object} shopData - Shop form data
+ * @param {string} shopData.id - The shop's ID 
+ * @returns {Promise<Object|null>} Inventory item or null
+ */
 export async function checkShopInventory(shopData){
     try{
-        const { shopId } = shopData;
-        const response = await api.get(`/shops/${shopId}/inventory/check`, shopData);
+        const { id } = shopData;
+        const response = await api.get(`/shops/${id}/inventory/check`, shopData);
         return response.data;
     }catch (err) {
         console.error("checkShopInventory Failed. shopInventoryApi.js", err);
@@ -25,6 +37,14 @@ export async function checkShopInventory(shopData){
 }
 
 // add item to shop with initial quantity
+/**
+ * 
+ * @param {Object} shopData - Shop form data
+ * @param {string} shopData.shopId - The shop's ID
+ * @param {string} shopData.itemId - The newly added item's ID
+ * @param {string} shopData.quantity - The initial quantity of the newly added item
+ * @returns {Promise<Object>} - The updated shop inventory
+ */
 export async function addShopItem(shopData){
     try{
         const { shopId } = shopData;
@@ -37,6 +57,13 @@ export async function addShopItem(shopData){
 }
 
 // remove item from shop inventory (removes entire stack regardless of quantity)
+/**
+ * 
+ * @param {Object} shopData - Shop form data
+ * @param {string} shopData.shopId - The shop's ID
+ * @param {string} shopData.itemId - The removed item's ID 
+ * @returns {Promise<Object>} - The updated shop inventory
+ */
 export async function removeShopItem(shopData){
     try{
         const { shopId } = shopData;
@@ -49,6 +76,14 @@ export async function removeShopItem(shopData){
 }
 
 // adjust quantity of an existing shop item
+/**
+ * 
+ * @param {Object} shopData - Shop form data
+ * @param {string} shopData.shopId - The shop's ID
+ * @param {string} shopData.itemId - the ID of the item to be updated
+ * @param {number} shopData.quantity - the quantity of item to be adjusted 
+ * @returns {Promise<Object>} - The updated item
+ */
 export async function updateShopItemQuantity(shopData){
     try{
         const { shopId } = shopData;
@@ -60,11 +95,17 @@ export async function updateShopItemQuantity(shopData){
     }
 }
 
-// clear al items from shop inventory
+// clear all items from shop inventory
+/**
+ * 
+ * @param {Object} shopData - Shop form data
+ * @param {string} shopData.id - The shop's ID
+ * @returns {Promise<Object>} - Cleared shop inventory (empty array)
+ */
 export async function clearShopInventory(shopData){
     try{
-        const { shopId } = shopData;
-        const response = await api.put(`/shops/${shopId}/inventory/clear`);
+        const { id } = shopData;
+        const response = await api.put(`/shops/${id}/inventory/clear`);
         return response.data;
     }catch (err) {
         console.error("clearShopInventory Failed. shopInventoryApi.js", err);
